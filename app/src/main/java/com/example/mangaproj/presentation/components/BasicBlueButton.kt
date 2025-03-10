@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun BasicBlueButton(){
+fun BasicBlueButton(buttonText: String){
     Button(
         onClick = { /* Действие при нажатии */ },
         colors = ButtonDefaults.buttonColors(
@@ -27,6 +27,6 @@ fun BasicBlueButton(){
             .height(72.dp)
             .padding(top = 16.dp)
     ) {
-        Text(text = "CLICK ME")
+        Text(text = buttonText)
     }
 }

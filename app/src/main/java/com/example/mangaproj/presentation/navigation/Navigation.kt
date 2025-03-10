@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mangaproj.presentation.screens.signinscreen.SignInScreen
+import com.example.mangaproj.presentation.screens.signupscreen.SignUpScreen
 import com.example.mangaproj.presentation.screens.splashscreen.SplashScreen
 
 @Composable
@@ -17,6 +18,9 @@ fun Navigation() {
         }
         composable(NavigationRoutes.SIGNIN) {
             SignInScreen(navController)
+        }
+        composable(NavigationRoutes.SIGNUP) {
+            SignUpScreen(navController)
         }
     }
 }

@@ -15,7 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SimpleTextField() {
+fun SimpleTextField(textFieldText: String) {
     var text by remember { mutableStateOf("") }
     OutlinedTextField(
         colors = TextFieldDefaults.colors(
@@ -26,7 +26,7 @@ fun SimpleTextField() {
         ),
         value = text,
         onValueChange = { text = it },
-        label = { Text("Введите текст") },
+        label = { Text(textFieldText) },
         shape = RoundedCornerShape(15.dp),
         modifier = Modifier.fillMaxWidth()
     )
