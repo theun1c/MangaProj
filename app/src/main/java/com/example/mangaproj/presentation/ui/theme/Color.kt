@@ -1,4 +1,4 @@
-package com.example.mangaproj.Presentation.UI.Theme
+package com.example.mangaproj.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

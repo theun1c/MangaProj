@@ -1,4 +1,4 @@
-package com.example.mangaproj.Presentation.UI.Theme
+package com.example.mangaproj.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

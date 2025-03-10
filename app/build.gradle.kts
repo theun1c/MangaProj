@@ -66,4 +66,13 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // -импорт навигации. ! чтобы работало надо также добавить плагин в libs.versions.toml
+        // implementation(libs.androidx.navigation.compose)
+    implementation("androidx.navigation:navigation-compose:2.8.6")
+    implementation(platform("io.github.jan-tennert.supabase:bom:2.6.1"))
+    implementation("io.github.jan-tennert.supabase:postgrest-kt")
+    implementation("io.github.jan-tennert.supabase:gotrue-kt")
+    implementation("io.ktor:ktor-client-android:2.3.12")
+
 }
