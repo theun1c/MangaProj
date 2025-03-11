@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+
 }
 
 android {
@@ -67,12 +68,15 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // -импорт навигации. ! чтобы работало надо также добавить плагин в libs.versions.toml
-        // implementation(libs.androidx.navigation.compose)
+    //-навигация
     implementation("androidx.navigation:navigation-compose:2.8.6")
+
+    //-супа
     implementation(platform("io.github.jan-tennert.supabase:bom:2.6.1"))
     implementation("io.github.jan-tennert.supabase:postgrest-kt")
     implementation("io.github.jan-tennert.supabase:gotrue-kt")
+
+    //-ктор
     implementation("io.ktor:ktor-client-android:2.3.12")
 
 }

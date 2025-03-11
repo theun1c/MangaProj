@@ -20,6 +20,7 @@ import androidx.navigation.NavHostController
 import com.example.mangaproj.presentation.navigation.Navigation
 import com.example.mangaproj.presentation.components.BasicBlueButton
 import com.example.mangaproj.presentation.components.SimpleTextField
+import com.example.mangaproj.presentation.components.SimpleTextFieldPassword
 import com.example.mangaproj.presentation.navigation.NavigationRoutes
 
 
@@ -39,11 +40,12 @@ fun SignInScreen(navController: NavHostController) {
                 fontSize = 32.sp,
                 color = Color.Blue,
                 fontWeight = FontWeight.W800,
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier
+                    .padding(bottom = 16.dp)
             )
 
             SimpleTextField("Введите логин")
-            SimpleTextField("Введите пароль")
+            SimpleTextFieldPassword("Введите пароль")
             BasicBlueButton("Войти")
             Row (
                 modifier = Modifier

@@ -22,7 +22,6 @@ class MainActivity : ComponentActivity() {
                 contentAlignment = Alignment.Center
             ) {
                 Column(
-
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Navigation()

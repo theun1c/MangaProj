@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.mangaproj.presentation.components.BasicBlueButton
 import com.example.mangaproj.presentation.components.SimpleTextField
+import com.example.mangaproj.presentation.components.SimpleTextFieldPassword
 import com.example.mangaproj.presentation.navigation.NavigationRoutes
 
 @Composable
@@ -38,8 +39,8 @@ fun SignUpScreen(navController: NavHostController){
             )
 
             SimpleTextField("Введите логин")
-            SimpleTextField("Введите пароль")
-            SimpleTextField("Подтвердите пароль")
+            SimpleTextFieldPassword("Введите пароль")
+            SimpleTextFieldPassword("Подтвердите пароль")
             BasicBlueButton("Зарегистрироваться")
 
             Row (
