@@ -14,9 +14,12 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun BasicBlueButton(buttonText: String){
+fun BasicBlueButton(
+    buttonText: String,
+    onClick: () -> Unit
+){
     Button(
-        onClick = { /* Действие при нажатии */ },
+        onClick = onClick ,
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.Blue,
 

@@ -8,6 +8,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -15,13 +19,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.mangaproj.data.network.SupabaseClient
 import com.example.mangaproj.presentation.components.BasicBlueButton
-import com.example.mangaproj.presentation.components.SimpleTextField
-import com.example.mangaproj.presentation.components.SimpleTextFieldPassword
+import com.example.mangaproj.presentation.components.EmailTextField
+import com.example.mangaproj.presentation.components.PasswordTextField
 import com.example.mangaproj.presentation.navigation.NavigationRoutes
 
 @Composable
-fun SignUpScreen(navController: NavHostController){
+fun SignUpScreen(navController: NavHostController, supabaseClient: SupabaseClient){
+    var emailValue by remember { mutableStateOf("") }
+    var passwordValue by remember { mutableStateOf("") }
+    var confirmPasswordValue by remember { mutableStateOf("") }
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -38,10 +46,34 @@ fun SignUpScreen(navController: NavHostController){
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            SimpleTextField("Введите логин")
-            SimpleTextFieldPassword("Введите пароль")
-            SimpleTextFieldPassword("Подтвердите пароль")
-            BasicBlueButton("Зарегистрироваться")
+            EmailTextField(
+                textFieldText = "Введите логин",
+                emailValue = emailValue,
+                onValueChange = { emailValue = it }
+            )
+
+            PasswordTextField(
+                textFieldText = "Введите пароль",
+                passwordValue = passwordValue,
+                onValueChange = { passwordValue = it }
+            )
+
+            PasswordTextField(
+                textFieldText = "Подтвердите пароль",
+                passwordValue = confirmPasswordValue,
+                onValueChange = { confirmPasswordValue = it }
+            )
+
+            BasicBlueButton(
+                buttonText = "Зарегистрироваться",
+                onClick = {
+                    if (passwordValue == confirmPasswordValue) {
+                        supabaseClient.signUpWithEmail(emailValue, passwordValue)
+                    } else {
+                        println("Пароли не совпадают")
+                    }
+                }
+            )
 
             Row (
                 modifier = Modifier
