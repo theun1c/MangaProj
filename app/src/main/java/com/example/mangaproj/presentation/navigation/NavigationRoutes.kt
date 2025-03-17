@@ -5,4 +5,5 @@ object NavigationRoutes {
     const val SIGNIN ="signin_screen"
     const val SPLASH ="splash_screen"
     const val SIGNUP ="signup_screen"
+    const val MAIN = "main_screen"
 }

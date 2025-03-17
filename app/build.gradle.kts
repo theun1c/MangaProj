@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    kotlin("plugin.compose") version "2.0.0" // Добавьте этот плагин
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -83,4 +83,7 @@ dependencies {
 
     // Ktor
     implementation(libs.ktor.client.android)
+
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
 }
