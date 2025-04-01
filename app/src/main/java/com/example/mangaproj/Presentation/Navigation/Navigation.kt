@@ -1,16 +1,13 @@
-package com.example.mangaproj.presentation.navigation
+package com.example.mangaproj.Presentation.Navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.mangaproj.data.network.SupabaseClient
-import com.example.mangaproj.presentation.screens.mainscreen.MainScreen
-import com.example.mangaproj.presentation.screens.signinscreen.SignInScreen
-import com.example.mangaproj.presentation.screens.signupscreen.SignUpScreen
-import com.example.mangaproj.presentation.screens.splashscreen.SplashScreen
+import com.example.mangaproj.Presentation.Screens.MainScreen.MainScreen
+import com.example.mangaproj.Presentation.Screens.SignInScreen.SignInScreen
+import com.example.mangaproj.Presentation.Screens.SignUpScreen.SignUpScreen
+import com.example.mangaproj.Presentation.Screens.SplashScreen.SplashScreen
 
 
 @Composable

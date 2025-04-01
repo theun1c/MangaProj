@@ -1,4 +1,4 @@
-package com.example.mangaproj.presentation.ui.theme
+package com.example.mangaproj.Presentation.Theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

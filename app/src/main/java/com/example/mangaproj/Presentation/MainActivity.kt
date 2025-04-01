@@ -1,4 +1,4 @@
-package com.example.mangaproj.presentation
+package com.example.mangaproj.Presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
-import com.example.mangaproj.presentation.navigation.Navigation
+import com.example.mangaproj.Presentation.Navigation.Navigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.example.mangaproj.presentation.components
+package com.example.mangaproj.Presentation.Components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size

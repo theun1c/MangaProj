@@ -1,4 +1,4 @@
-package com.example.mangaproj.presentation.components
+package com.example.mangaproj.Presentation.Components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,8 +21,7 @@ fun BasicBlueButton(
     Button(
         onClick = onClick ,
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color.Blue,
-
+            containerColor = Color(0xFF24b9bd),
         ),
         shape = RoundedCornerShape(15.dp),
         modifier = Modifier

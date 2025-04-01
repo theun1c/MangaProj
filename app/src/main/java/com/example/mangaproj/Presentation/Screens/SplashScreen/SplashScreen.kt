@@ -1,7 +1,6 @@
-package com.example.mangaproj.presentation.screens.splashscreen
+package com.example.mangaproj.Presentation.Screens.SplashScreen
 
 import android.view.animation.OvershootInterpolator
-import android.window.SplashScreen
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -16,7 +15,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import com.example.mangaproj.R
-import com.example.mangaproj.presentation.navigation.NavigationRoutes
+import com.example.mangaproj.Presentation.Navigation.NavigationRoutes
 import kotlinx.coroutines.delay
 
 @Composable

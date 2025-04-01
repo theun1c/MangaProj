@@ -1,12 +1,11 @@
-package com.example.mangaproj.presentation.viewmodels
+package com.example.mangaproj.Presentation.ViewModels
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.State
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.mangaproj.data.models.UserState
-import com.example.mangaproj.data.network.SupabaseClient
+import com.example.mangaproj.Domain.Models.UserState
+import com.example.mangaproj.Data.Network.SupabaseClient
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.providers.builtin.Email
 import kotlinx.coroutines.launch

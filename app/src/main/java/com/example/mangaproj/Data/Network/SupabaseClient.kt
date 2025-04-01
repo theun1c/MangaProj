@@ -1,13 +1,8 @@
-package com.example.mangaproj.data.network
+package com.example.mangaproj.Data.Network
 
-import android.content.Context
 import io.github.jan.supabase.auth.Auth
-import io.github.jan.supabase.auth.auth
-import io.github.jan.supabase.auth.providers.builtin.Email
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 
 object SupabaseClient {
     val client = createSupabaseClient(

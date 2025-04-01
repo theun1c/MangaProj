@@ -1,4 +1,4 @@
-package com.example.mangaproj.presentation.navigation
+package com.example.mangaproj.Presentation.Navigation
 
 //Все пути
 object NavigationRoutes {

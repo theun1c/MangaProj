@@ -1,4 +1,4 @@
-package com.example.mangaproj.data.models
+package com.example.mangaproj.Domain.Models
 
 sealed class UserState {
     object Loading: UserState()

@@ -1,4 +1,4 @@
-package com.example.mangaproj.presentation.screens.signupscreen
+package com.example.mangaproj.Presentation.Screens.SignUpScreen
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.currentComposer
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,13 +20,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.mangaproj.data.models.UserState
-import com.example.mangaproj.data.network.SupabaseClient
-import com.example.mangaproj.presentation.components.BasicBlueButton
-import com.example.mangaproj.presentation.components.EmailTextField
-import com.example.mangaproj.presentation.components.PasswordTextField
-import com.example.mangaproj.presentation.navigation.NavigationRoutes
-import com.example.mangaproj.presentation.viewmodels.SupabaseAuthViewModel
+import com.example.mangaproj.Domain.Models.UserState
+import com.example.mangaproj.Presentation.Components.BasicBlueButton
+import com.example.mangaproj.Presentation.Components.EmailTextField
+import com.example.mangaproj.Presentation.Components.PasswordTextField
+import com.example.mangaproj.Presentation.Navigation.NavigationRoutes
+import com.example.mangaproj.Presentation.ViewModels.SupabaseAuthViewModel
 
 @Composable
 fun SignUpScreen(navController: NavHostController, signUpViewModel : SupabaseAuthViewModel = viewModel()){
@@ -51,7 +49,7 @@ fun SignUpScreen(navController: NavHostController, signUpViewModel : SupabaseAut
             Text(
                 "РЕГИСТРАЦИЯ",
                 fontSize = 32.sp,
-                color = Color.Blue,
+                color = Color(0xFF24b9bd),
                 fontWeight = FontWeight.W800,
                 modifier = Modifier.padding(bottom = 16.dp)
             )
@@ -98,7 +96,7 @@ fun SignUpScreen(navController: NavHostController, signUpViewModel : SupabaseAut
                 Text(
                     "Войти",
                     fontSize = 14.sp,
-                    color = Color.Blue,
+                    color = Color(0xFF24b9bd),
                     fontWeight = FontWeight.W600,
                     modifier = Modifier.clickable {
                         navController.navigate(NavigationRoutes.SIGNIN)
