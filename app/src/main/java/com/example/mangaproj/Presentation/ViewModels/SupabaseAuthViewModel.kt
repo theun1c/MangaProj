@@ -17,15 +17,35 @@ class SupabaseAuthViewModel: ViewModel() {
     fun signUp(
         userEmail: String,
         userPassword: String,
-    ){
+    ) {
+        // Валидация email
+        if (userEmail.isBlank()) {
+            _userState.value = UserState.Error("Email cannot be empty")
+            return
+        }
+        if (!isValidEmail(userEmail)) {
+            _userState.value = UserState.Error("Please enter a valid email")
+            return
+        }
+
+        // Валидация пароля
+        if (userPassword.isBlank()) {
+            _userState.value = UserState.Error("Password cannot be empty")
+            return
+        }
+        if (userPassword.length < 6) {  // Минимальная длина пароля
+            _userState.value = UserState.Error("Password must be at least 6 characters")
+            return
+        }
+
         viewModelScope.launch {
             try {
-                SupabaseClient.client.auth.signUpWith(Email){
+                SupabaseClient.client.auth.signUpWith(Email) {
                     email = userEmail
                     password = userPassword
                 }
-                _userState.value = UserState.Success("Succsessful register new user!")
-            } catch (e: Exception){
+                _userState.value = UserState.Success("Successful registration!")
+            } catch (e: Exception) {
                 _userState.value = UserState.Error("Error: ${e.message}")
             }
         }
@@ -34,19 +54,37 @@ class SupabaseAuthViewModel: ViewModel() {
     fun signIn(
         userEmail: String,
         userPassword: String,
-    ){
+    ) {
+        // Простая валидация email
+        if (!isValidEmail(userEmail)) {
+            _userState.value = UserState.Error("Please enter a valid email address")
+            return
+        }
+        // Валидация пароля
+        if (userPassword.isBlank()) {
+            _userState.value = UserState.Error("Password cannot be empty")
+            return
+        }
+        if (userPassword.length < 6) {  // Минимальная длина пароля
+            _userState.value = UserState.Error("Password must be at least 6 characters")
+            return
+        }
         viewModelScope.launch {
             try {
-                SupabaseClient.client.auth.signInWith(Email){
+                SupabaseClient.client.auth.signInWith(Email) {
                     email = userEmail
                     password = userPassword
                 }
-                _userState.value = UserState.Success("Succsessful log in!")
-
-            } catch (e: Exception){
+                _userState.value = UserState.Success("Successful log in!")
+            } catch (e: Exception) {
                 _userState.value = UserState.Error("Error: ${e.message}")
             }
         }
+    }
+
+    // Функция для проверки валидности email
+    private fun isValidEmail(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
 
