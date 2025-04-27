@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -15,6 +16,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -23,6 +25,7 @@ import androidx.navigation.NavHostController
 import com.example.mangaproj.Domain.Models.UserState
 import com.example.mangaproj.Presentation.Components.BasicBlueButton
 import com.example.mangaproj.Presentation.Components.EmailTextField
+import com.example.mangaproj.Presentation.Components.LoadingComponent
 import com.example.mangaproj.Presentation.Components.PasswordTextField
 import com.example.mangaproj.Presentation.Navigation.NavigationRoutes
 import com.example.mangaproj.Presentation.ViewModels.SupabaseAuthViewModel
@@ -32,11 +35,15 @@ import com.example.mangaproj.Presentation.ViewModels.SupabaseAuthViewModel
 fun SignInScreen(navController: NavHostController, signInViewModel: SupabaseAuthViewModel = viewModel()) {
     var emailValue by remember { mutableStateOf("") }
     var passwordValue by remember { mutableStateOf("") }
-    var confirmPasswordValue by remember { mutableStateOf("") }
+    val context = LocalContext.current
     val userState by signInViewModel.userState
     var currentUserState by remember {
         mutableStateOf("")
     }
+    LaunchedEffect(Unit) {
+        signInViewModel.isUserLoggedIn(context)
+    }
+    
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -67,7 +74,7 @@ fun SignInScreen(navController: NavHostController, signInViewModel: SupabaseAuth
             )
 
             BasicBlueButton(buttonText = "Войти", onClick = {
-                    signInViewModel.signIn(emailValue, passwordValue)
+                    signInViewModel.signIn(context, emailValue, passwordValue)
                 }
             )
 
@@ -93,7 +100,7 @@ fun SignInScreen(navController: NavHostController, signInViewModel: SupabaseAuth
             }
             when(userState){
                 is UserState.Loading -> {
-
+                    LoadingComponent()
                 }
                 is UserState.Success -> {
                     val message = (userState as UserState.Success).message

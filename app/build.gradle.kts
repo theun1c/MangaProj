@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    kotlin("plugin.serialization") version "2.1.0"
 }
 
 android {
@@ -80,7 +81,8 @@ dependencies {
     implementation(libs.postgrest.kt)
     implementation(libs.auth.kt)
     implementation(libs.realtime.kt)
-
+    implementation("io.github.jan-tennert.supabase:gotrue-kt:2.1.0")
+    implementation("io.github.jan-tennert.supabase:postgrest-kt:2.1.0")
     // Ktor
     implementation(libs.ktor.client.android)
 

@@ -46,6 +46,27 @@ fun EmailTextField(
 }
 
 @Composable
+fun BaseTextField(
+    textFieldText: String,
+    textValue: String, // Принимаем текущее значение
+    onValueChange: (String) -> Unit // Обратный вызов для обновления значения
+) {
+    OutlinedTextField(
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = Color.White,
+            unfocusedContainerColor = Color.White,
+            unfocusedIndicatorColor = Color.Gray,
+            focusedIndicatorColor = Color.Gray,
+        ),
+        value = textValue,
+        onValueChange = onValueChange, // Используем обратный вызов
+        label = { Text(textFieldText) },
+        shape = RoundedCornerShape(15.dp),
+        modifier = Modifier.fillMaxWidth()
+    )
+}
+
+@Composable
 fun PasswordTextField(
     textFieldText: String,
     passwordValue: String,
