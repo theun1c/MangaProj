@@ -1,9 +1,13 @@
 package com.example.mangaproj.Presentation.Navigation
 
 import MainScreen
+import MangaDetailScreen
+import MangaViewModel
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
@@ -18,6 +22,12 @@ import com.example.mangaproj.Presentation.ViewModels.SignInViewModel
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
+    val mangaViewModel: MangaViewModel = viewModel()
+    val mangaList by mangaViewModel.mangaList.collectAsState()
+
+    LaunchedEffect(Unit) {
+        mangaViewModel.loadManga() // Загружаем мангу
+    }
 
     NavHost(navController = navController, startDestination = NavigationRoutes.SPLASH) {
         composable(NavigationRoutes.SPLASH) {
@@ -42,10 +52,19 @@ fun Navigation() {
             }
 
             if (authViewModel.getToken(context) != null) {
-                MainScreen(navController)
+                MainScreen(navController, mangaList) // Передаем список манги в MainScreen
             } else {
                 // Показываем загрузку или ничего
             }
         }
+
+        composable("mangaDetail/{mangaId}") { backStackEntry ->
+            val mangaId = backStackEntry.arguments?.getString("mangaId")
+            val manga = mangaList.firstOrNull { it.id == mangaId }
+            if (manga != null) {
+                MangaDetailScreen(manga = manga, navController = navController)
+            }
+        }
+
     }
 }

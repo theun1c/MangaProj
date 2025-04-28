@@ -2,6 +2,7 @@ package com.example.mangaproj.Presentation.Components
 
 import Manga
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,12 +21,13 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 
 @Composable
-fun MangaCardStyled(manga: Manga) {
+fun MangaCardStyled(manga: Manga, onMangaClick: (Manga) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = 200.dp)
-            .padding(4.dp),
+            .padding(4.dp)
+            .clickable { onMangaClick(manga) }, // Добавим обработчик нажатия
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFF24b9bd) // Цвет кнопки
         ),

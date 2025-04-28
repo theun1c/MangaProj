@@ -22,12 +22,10 @@ import com.example.mangaproj.Presentation.ViewModels.SignInViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(navController: NavHostController) {
+fun MainScreen(navController: NavHostController, mangaList: List<Manga>) {
     val authViewModel: SignInViewModel = viewModel()
-    val mangaViewModel: MangaViewModel = viewModel()
     val context = LocalContext.current
     val userState by authViewModel.userState
-    val mangaList by mangaViewModel.mangaList.collectAsState()
 
     // Состояние для поиска
     var searchQuery by remember { mutableStateOf("") }
@@ -39,13 +37,12 @@ fun MainScreen(navController: NavHostController) {
 
     LaunchedEffect(Unit) {
         authViewModel.isUserLoggedIn(context)
-        mangaViewModel.loadManga()
     }
 
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Манга", color = Color.White) },
+                title = { Text("Доступная манга", color = Color.White) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color(0xFF24b9bd)
                 )
@@ -66,13 +63,13 @@ fun MainScreen(navController: NavHostController) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 16.dp)
-                        .height(56.dp), // Высота поля поиска для согласованности с кнопкой
-                    shape = RoundedCornerShape(15.dp), // Закругленные углы как у кнопки
+                        .height(56.dp),
+                    shape = RoundedCornerShape(15.dp),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
-                        focusedBorderColor = Color(0xFF24b9bd), // Цвет границы при фокусе
-                        unfocusedBorderColor = Color(0xFF24b9bd), // Цвет границы в обычном состоянии
-                        focusedLabelColor = Color(0xFF24b9bd), // Цвет метки при фокусе
-                        unfocusedLabelColor = Color(0xFF24b9bd) // Цвет метки в обычном состоянии
+                        focusedBorderColor = Color(0xFF24b9bd),
+                        unfocusedBorderColor = Color(0xFF24b9bd),
+                        focusedLabelColor = Color(0xFF24b9bd),
+                        unfocusedLabelColor = Color(0xFF24b9bd)
                     )
                 )
 
@@ -84,7 +81,9 @@ fun MainScreen(navController: NavHostController) {
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     items(filteredMangaList) { manga ->
-                        MangaCardStyled(manga = manga)
+                        MangaCardStyled(manga = manga) {
+                            navController.navigate("mangaDetail/${manga.id}")
+                        }
                     }
                 }
 
