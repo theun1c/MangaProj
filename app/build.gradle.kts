@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.mangaproj"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.mangaproj"
@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.media3.common.ktx)
 
     // Тестирование
     testImplementation(libs.junit)
@@ -88,4 +89,5 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
+    implementation(libs.coil.compose)
 }
