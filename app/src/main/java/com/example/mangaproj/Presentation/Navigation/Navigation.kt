@@ -1,7 +1,7 @@
 package com.example.mangaproj.Presentation.Navigation
 
 import MainScreen
-import MangaScreen
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
@@ -12,7 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.mangaproj.Presentation.Screens.SignInScreen.SignInScreen
 import com.example.mangaproj.Presentation.Screens.SignUpScreen.SignUpScreen
 import com.example.mangaproj.Presentation.Screens.SplashScreen.SplashScreen
-import com.example.mangaproj.Presentation.ViewModels.SupabaseAuthViewModel
+import com.example.mangaproj.Presentation.ViewModels.SignInViewModel
 
 
 @Composable
@@ -29,11 +29,8 @@ fun Navigation() {
         composable(NavigationRoutes.SIGNUP) {
             SignUpScreen(navController)
         }
-        composable("manga") {
-            MangaScreen()
-        }
         composable(NavigationRoutes.MAIN) {
-            val authViewModel: SupabaseAuthViewModel = viewModel()
+            val authViewModel: SignInViewModel = viewModel()
             val context = LocalContext.current
 
             LaunchedEffect(Unit) {

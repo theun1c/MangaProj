@@ -29,10 +29,11 @@ import com.example.mangaproj.Presentation.Components.EmailTextField
 import com.example.mangaproj.Presentation.Components.LoadingComponent
 import com.example.mangaproj.Presentation.Components.PasswordTextField
 import com.example.mangaproj.Presentation.Navigation.NavigationRoutes
-import com.example.mangaproj.Presentation.ViewModels.SupabaseAuthViewModel
+import com.example.mangaproj.Presentation.ViewModels.SignUpViewModel
+
 
 @Composable
-fun SignUpScreen(navController: NavHostController, signUpViewModel : SupabaseAuthViewModel = viewModel()){
+fun SignUpScreen(navController: NavHostController, signUpViewModel : SignUpViewModel = viewModel()){
     var emailValue by remember { mutableStateOf("") }
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
@@ -105,10 +106,6 @@ fun SignUpScreen(navController: NavHostController, signUpViewModel : SupabaseAut
                 passwordValue = confirmPasswordValue,
                 onValueChange = { confirmPasswordValue = it }
             )
-
-
-
-
 
             BasicBlueButton(
                 buttonText = "Зарегистрироваться",

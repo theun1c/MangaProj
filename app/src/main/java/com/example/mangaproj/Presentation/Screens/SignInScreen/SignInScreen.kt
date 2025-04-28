@@ -28,11 +28,12 @@ import com.example.mangaproj.Presentation.Components.EmailTextField
 import com.example.mangaproj.Presentation.Components.LoadingComponent
 import com.example.mangaproj.Presentation.Components.PasswordTextField
 import com.example.mangaproj.Presentation.Navigation.NavigationRoutes
-import com.example.mangaproj.Presentation.ViewModels.SupabaseAuthViewModel
+import com.example.mangaproj.Presentation.ViewModels.SignInViewModel
+
 
 
 @Composable
-fun SignInScreen(navController: NavHostController, signInViewModel: SupabaseAuthViewModel = viewModel()) {
+fun SignInScreen(navController: NavHostController, signInViewModel: SignInViewModel = viewModel()) {
     var emailValue by remember { mutableStateOf("") }
     var passwordValue by remember { mutableStateOf("") }
     val context = LocalContext.current
