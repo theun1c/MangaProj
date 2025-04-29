@@ -13,6 +13,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.mangaproj.Presentation.Screens.FavoritesScreen.FavoritesScreen
 import com.example.mangaproj.Presentation.Screens.SignInScreen.SignInScreen
 import com.example.mangaproj.Presentation.Screens.SignUpScreen.SignUpScreen
 import com.example.mangaproj.Presentation.Screens.SplashScreen.SplashScreen
@@ -64,6 +65,19 @@ fun Navigation() {
             if (manga != null) {
                 MangaDetailScreen(manga = manga, navController = navController)
             }
+        }
+
+        composable("favorites") {
+            FavoritesScreen(
+                navController = navController,
+                favoriteMangaList = mangaViewModel.favorites.collectAsState(),
+                onFavoriteClick = { manga ->
+                    mangaViewModel.toggleFavorite(manga)
+                },
+                onMangaClick = { manga ->
+                    navController.navigate("mangaDetail/${manga.id}")
+                }
+            )
         }
 
     }

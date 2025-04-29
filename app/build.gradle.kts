@@ -78,6 +78,7 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.8.6")
 
     // Supabase
+
     implementation(platform(libs.bom))
     implementation(libs.postgrest.kt)
     implementation(libs.auth.kt)
@@ -90,4 +91,5 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
     implementation(libs.coil.compose)
+
 }

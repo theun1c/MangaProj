@@ -4,6 +4,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -15,7 +16,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.mangaproj.Domain.Models.UserState
 import com.example.mangaproj.Presentation.Components.BasicBlueButton
-import com.example.mangaproj.Presentation.Components.LoadingComponent
 import com.example.mangaproj.Presentation.Components.MangaCardStyled
 import com.example.mangaproj.Presentation.Navigation.NavigationRoutes
 import com.example.mangaproj.Presentation.ViewModels.SignInViewModel
@@ -25,7 +25,7 @@ import com.example.mangaproj.Presentation.ViewModels.SignInViewModel
 fun MainScreen(navController: NavHostController, mangaList: List<Manga>) {
     val authViewModel: SignInViewModel = viewModel()
     val context = LocalContext.current
-    val userState by authViewModel.userState
+    val mangaViewModel: MangaViewModel = viewModel()
 
     // Состояние для поиска
     var searchQuery by remember { mutableStateOf("") }
@@ -41,9 +41,20 @@ fun MainScreen(navController: NavHostController, mangaList: List<Manga>) {
 
     Scaffold(
         topBar = {
-            CenterAlignedTopAppBar(
+            TopAppBar(
                 title = { Text("Доступная манга", color = Color.White) },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                actions = {
+                    IconButton(onClick = {
+                        navController.navigate("favorites")
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.Favorite,
+                            contentDescription = "Избранное",
+                            tint = Color.White
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFF24b9bd)
                 )
             )
@@ -81,9 +92,17 @@ fun MainScreen(navController: NavHostController, mangaList: List<Manga>) {
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     items(filteredMangaList) { manga ->
-                        MangaCardStyled(manga = manga) {
-                            navController.navigate("mangaDetail/${manga.id}")
-                        }
+                        MangaCardStyled(
+                            manga = manga,
+                            onMangaClick = {
+                                navController.navigate("mangaDetail/${manga.id}")
+                            },
+                            onFavoriteClick = {
+                                // Логика для добавления/удаления манги из избранного
+                                mangaViewModel.toggleFavorite(manga)
+                            }
+                        )
+
                     }
                 }
 

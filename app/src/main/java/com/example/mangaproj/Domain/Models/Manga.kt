@@ -7,5 +7,6 @@ data class Manga(
     val title: String,
     val description: String,
     @SerialName("image_url")
-    val imageUrl: String
+    val imageUrl: String,
+    var isFavorite: Boolean = false
 )
